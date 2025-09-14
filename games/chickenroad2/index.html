@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chicken Road - Bharat Clubs</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ff3b3b; /* bright red from BHT club logo */
+      color: #ffffff;
+      font-size: 18px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #8B0000;
+      padding: 20px;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 4px 8px rgba(139,0,0,0.6);
+      flex-shrink: 0;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+    main {
+      flex: 1;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      background-color: #8B0000;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(139,0,0,0.7);
+      text-align: center;
+    }
+    .game-logo {
+      max-width: 320px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .description {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      white-space: pre-line;
+      color: #fff;
+    }
+    .btn-play {
+      background-color: #ff2e00;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2em;
+      padding: 15px 50px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(255, 46, 0, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin: 20px auto 40px auto;
+    }
+    .btn-play:hover {
+      background-color: #e02a00;
+      box-shadow: 0 8px 16px rgba(224, 42, 0, 0.8);
+    }
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.95em;
+  flex-shrink: 0;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.7);
+  width: 100%;
+}
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      main {
+        margin: 20px 10px 80px 10px; /* extra bottom margin for fixed footer */
+        padding: 30px 15px;
+      }
+      .description {
+        font-size: 1em;
+        text-align: left;
+      }
+      .btn-play {
+        width: 100%;
+        padding: 15px 0;
+      }
+    }
+    .content-wrapper {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      background-color: #8B0000;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(139,0,0,0.7);
+    }
+    .section-block {
+      background-color: #a72a2a;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      margin-bottom: 40px;
+      color: #fff;
+      text-align: left;
+    }
+    .section-block ol,
+    .section-block ul {
+      padding-left: 20px;
+      line-height: 1.8;
+      color: #fff;
+    }
+    .section-block ol li,
+    .section-block ul li {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .section-block blockquote {
+      background-color: #8b0000;
+      padding: 15px 20px;
+      border-left: 4px solid #ff2e00;
+      font-style: italic;
+      color: #ccc;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    .cta-buttons a {
+      display: inline-block;
+      padding: 14px 35px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    .cta-buttons .btn-play {
+      background-color: #ff2e00;
+      color: #fff;
+    }
+    .cta-buttons .btn-play:hover {
+      background-color: #e02a00;
+    }
+    .cta-buttons .btn-support {
+      background-color: #0088cc;
+      color: #fff;
+    }
+    .cta-buttons .btn-support:hover {
+      background-color: #0077b6;
+    }
+    /* Hamburger menu styles */
+    .hamburger-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+    .hamburger-icon {
+      font-size: 30px;
+      background-color: #8B0000;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
+    }
+    .hamburger-icon:hover {
+      background-color: #a30000;
+    }
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .hamburger-menu a {
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-bottom: 1px solid #333;
+      transition: background-color 0.2s;
+    }
+    .hamburger-menu a:hover {
+      background-color: #8B0000;
+    }
+    .hamburger-menu.show {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chicken Road</h1>
+  </header>
+  <main>
+    <img src="chickenroad2.jpg" alt="Chicken Road Logo" class="game-logo" />
+    <div>
+      <a href="https://www.bhdfiejand.com/#/register?invitationCode=818553846140"
+         class="btn-play"
+         target="_blank"
+         rel="noopener noreferrer">
+         Play Now
+      </a>
+    </div>
+    <div class="description">
+      <p>
+        Chicken Road is a fun, fast-paced online game where players race to cross the road while avoiding obstacles. Strategic timing and quick decisions are key to winning.
+      </p>
+      <p>
+        With short rounds and instant results, Chicken Road keeps you entertained whether you're on your phone or desktop. Challenge yourself and climb the leaderboards!
+      </p>
+      <p>
+        Enjoy daily bonuses, streak rewards, and a friendly community of players. Secure deposits and fast withdrawals let you play confidently.
+      </p>
+      <p>
+        Join thousands of active players and experience why Chicken Road is one of Bharat Clubs’ favorite games.
+      </p>
+    </div>
+
+    <main class="content-wrapper">
+        <div class="description">
+          <h2>About Chicken Road</h2>
+          <p>Chicken Road is an exciting online game that mixes fast action with strategic moves. Cross the road, avoid obstacles, and race against time.</p>
+          <p>Short rounds keep the gameplay fast and fun, allowing multiple plays throughout the day.</p>
+          <p>Our platform rewards players with daily bonuses, win streak prizes, and leaderboard rankings.</p>
+          <p>Bharat Clubs guarantees a safe and seamless gaming experience with quick deposits and withdrawals.</p>
+        </div>
+      </section>
+
+      <!-- How to Play -->
+      <section class="section-block">
+        <h2>How to Play Chicken Road</h2>
+        <ol>
+          <li>Choose your chicken and start the race.</li>
+          <li>Avoid cars, trucks, and obstacles while moving forward.</li>
+          <li>Reach the finish line before time runs out.</li>
+          <li>Earn points for each successful crossing.</li>
+          <li>Compete with others on the leaderboard to win bonuses.</li>
+        </ol>
+      </section>
+
+      <!-- Features -->
+      <section class="section-block">
+        <h2>Why Play Chicken Road?</h2>
+        <ul>
+          <li>🚦 Fast-paced rounds with instant results</li>
+          <li>🎁 Daily bonuses and winning streak rewards</li>
+          <li>📱 Fully responsive and mobile-friendly</li>
+          <li>🔒 Secure, fast deposits and withdrawals</li>
+          <li>👥 Large active player community in India</li>
+        </ul>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="section-block">
+        <h2>User Reviews</h2>
+        <blockquote>"Chicken Road is super addictive and easy to play. Great rewards too!" – <em>Ravi from Bangalore</em></blockquote>
+        <blockquote>"Love the fast games and instant payouts. Works perfectly on mobile." – <em>Neha from Hyderabad</em></blockquote>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section-block">
+        <h2>Frequently Asked Questions</h2>
+        <p><strong>Is Chicken Road legal in India?</strong><br />Chicken Road is a game of skill and allowed on most platforms. Please check your state laws.</p>
+        <p><strong>How fast are withdrawals?</strong><br />Withdrawals are usually processed instantly after win confirmation.</p>
+        <p><strong>Is there a minimum deposit?</strong><br />You can start playing with as little as ₹10.</p>
+        <p><strong>Is support available?</strong><br />Yes! Reach us on Telegram anytime.</p>
+      </section>
+
+      <section class="section-block cta-buttons">
+        <a href="https://www.bhdfiejand.com/#/register?invitationCode=818553846140"
+           class="btn-play"
+           target="_blank"
+           rel="noopener noreferrer">
+           🎮 Play Chicken Road Now
+        </a>
+        <a href="https://t.me/bhtclubs"
+           class="btn-support"
+           target="_blank"
+           rel="noopener noreferrer">
+           💬 Contact Support on Telegram
+        </a>
+      </section>
+
+    </main>
+  </main>
+
+  <div class="hamburger-container">
+    <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+    <div class="hamburger-menu" id="hamburgerMenu">
+      <a href="/index.html">Home</a>
+      <a href="/games/wingo/index.html">Wingo</a>
+      <a href="/games/aviator/index.html">Aviator</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("hamburgerMenu").classList.toggle("show");
+    }
+  </script>
+
+  <footer>
+    &copy; 2025 Bharat Clubs. All rights reserved.
+  </footer>
+</body>
+</html>

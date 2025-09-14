@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aviator - Bharat Clubs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+ body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ff3b3b;
+  color: #fff;
+  font-size: 18px;
+}
+    header {
+      background-color: #8B0000;
+      padding: 20px;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 4px 8px rgba(139,0,0,0.6);
+      flex-shrink: 0;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+main {
+  flex: 1 0 auto; /* grow and shrink, take remaining space */
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 30px auto;
+  background-color: #8B0000;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(139,0,0,0.7);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    .game-logo {
+      max-width: 320px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .description {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      max-width: 700px;
+      text-align: left;
+      white-space: pre-line;
+    }
+    .btn-play {
+      background-color: #ff2e00;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2em;
+      padding: 15px 50px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(255, 46, 0, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin: 20px auto; /* Center horizontally */
+    }
+    .btn-play:hover {
+      background-color: #e02a00;
+      box-shadow: 0 8px 16px rgba(224, 42, 0, 0.8);
+    }
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.95em;
+  flex-shrink: 0;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.7);
+  width: 100%;
+}
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      main {
+        margin: 20px 10px 80px 10px; /* extra bottom margin for footer */
+        padding: 30px 15px;
+      }
+      .description {
+        font-size: 1em;
+        text-align: left;
+      }
+      .btn-play {
+        width: 100%;
+        padding: 15px 0;
+      }
+    }
+    .hamburger-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+    .hamburger-icon {
+      font-size: 30px;
+      background-color: #8B0000;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
+    }
+    .hamburger-icon:hover {
+      background-color: #a30000;
+    }
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .hamburger-menu a {
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-bottom: 1px solid #333;
+      transition: background-color 0.2s;
+    }
+    .hamburger-menu a:hover {
+      background-color: #8B0000;
+    }
+    .hamburger-menu.show {
+      display: flex;
+    }
+    .content-wrapper {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      background-color: #8B0000; /* current dark red */
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(139,0,0,0.7);
+    }
+    .section-block {
+      background-color: #a72a2a; /* brighter dark red */
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      margin-bottom: 40px;
+    }
+    .description p {
+      margin-bottom: 10px;
+      line-height: 1.7;
+      color: #fff;
+    }
+    .section-block ol {
+      text-align: justify;
+      padding-left: 20px;
+      margin-top: 10px;
+      line-height: 1.8;
+      color: #fff;
+    }
+    .section-block ol li,
+    .section-block ul li {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .section-block ul {
+      padding-left: 20px;
+      text-align: left;
+      color: #fff;
+    }
+    .section-block blockquote {
+      background-color: #8b0000;
+      padding: 15px 20px;
+      border-left: 4px solid #ff2e00;
+      font-style: italic;
+      color: #ccc;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    .cta-buttons a {
+      display: inline-block;
+      padding: 14px 35px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    .cta-buttons .btn-play {
+      background-color: #ff2e00;
+      color: #fff;
+    }
+    .cta-buttons .btn-play:hover {
+      background-color: #e02a00;
+    }
+    .cta-buttons .btn-support {
+      background-color: #0088cc;
+      color: #fff;
+    }
+    .cta-buttons .btn-support:hover {
+      background-color: #0077b6;
+    }
+  </style>
+</head>
+  <header>
+    <h1>Aviator Game – Play & Win on BharatClub</h1>
+  </header>
+
+  <section id="about" class="section-block">
+    <h2>About Aviator</h2>
+    <p>The Aviator game is one of the most exciting crash games in India. Unlike traditional casino games, Aviator relies on quick decisions and timing. A plane takes off, and as it flies higher, the multiplier grows – but if you wait too long, the plane crashes, and you lose the bet. This balance of risk and reward makes Aviator both thrilling and strategic.</p>
+    <p>Aviator gained massive popularity because it combines simple gameplay with high potential rewards. It is fair, transparent, and fast-paced, making it a top choice for both new and experienced players on BharatClub.</p>
+  </section>
+
+  <section id="how-to-play" class="section-block">
+    <h2>How to Play Aviator</h2>
+    <ol>
+      <li>Login to your BharatClub account and open the Aviator game.</li>
+      <li>Place your bet before the round begins.</li>
+      <li>Watch the plane take off – the multiplier starts at 1x and increases quickly.</li>
+      <li>Click <strong>Cash Out</strong> before the plane flies away to secure your winnings.</li>
+      <li>If the plane flies away before you cash out, your bet is lost.</li>
+    </ol>
+    <p>You can place two bets at once, use auto cash-out for safety, or play manually for more control.</p>
+  </section>
+
+  <section id="why-play" class="section-block">
+    <h2>Why Play Aviator on BharatClub?</h2>
+    <ul>
+      <li>🚀 Fast-paced gameplay with instant results.</li>
+      <li>🎯 Transparent and fair with provably fair algorithms.</li>
+      <li>💸 High payouts for smart timing and strategies.</li>
+      <li>📱 Fully optimized for mobile play.</li>
+      <li>⚡ Daily bonuses and instant withdrawals.</li>
+    </ul>
+  </section>
+
+  <section id="strategies" class="section-block">
+    <h2>Winning Strategies for Aviator</h2>
+    <p>Although Aviator is a game of chance, many players use strategies to increase their chances of consistent wins:</p>
+    <h3>1. Conservative Strategy</h3>
+    <p>Cash out early at low multipliers (1.5x–2x). This gives smaller but safer wins over time.</p>
+    <h3>2. Aggressive Strategy</h3>
+    <p>Hold out for higher multipliers (10x+). Riskier, but the payout can be massive.</p>
+    <h3>3. Mixed Strategy</h3>
+    <p>Use two bets: one conservative (cash out early) and one aggressive (hold longer). Balances risk and reward.</p>
+    <h3>4. Bankroll Management</h3>
+    <p>Set limits for wins and losses. Don’t chase losses – stick to a plan.</p>
+  </section>
+
+  <section id="history" class="section-block">
+    <h2>History of Aviator</h2>
+    <p>Aviator belongs to the “crash game” category that started in online casinos a few years ago. Its simple yet thrilling format quickly made it a global phenomenon. In India, Aviator’s popularity has skyrocketed because it combines the thrill of instant decisions with fair gameplay. BharatClub brings this global favorite closer to Indian players with local support, payments, and promotions.</p>
+  </section>
+
+  <section id="bonuses" class="section-block">
+    <h2>Bonuses & Promotions</h2>
+    <ul>
+      <li>🎁 Welcome Bonus for new players.</li>
+      <li>⚡ Daily Rewards for active players.</li>
+      <li>🏆 Leaderboard Challenges for top multipliers.</li>
+      <li>💸 Instant Withdrawal Offers.</li>
+    </ul>
+  </section>
+
+  <section id="reviews" class="section-block">
+    <h2>Player Reviews</h2>
+    <div class="review">“Aviator is so addictive! I love the thrill of timing my cashouts.” – Rohit, Delhi</div>
+    <div class="review">“Finally a game that’s both fun and fair. BharatClub makes it smooth and secure.” – Priya, Mumbai</div>
+    <div class="review">“I play small bets daily and keep winning steadily. Highly recommend it.” – Arjun, Bangalore</div>
+    <div class="review">“Instant withdrawals are the best part. No delays at all!” – Kavya, Pune</div>
+    <div class="review">“The strategies really help. Mixing safe and risky bets keeps it exciting.” – Manish, Hyderabad</div>
+  </section>
+
+  <section id="community" class="section-block">
+    <h2>Community & Social Proof</h2>
+    <p>BharatClub has an active community of Aviator players. From leaderboards to Telegram groups, players share strategies, wins, and experiences daily. Join the growing Aviator family and be part of the excitement.</p>
+  </section>
+
+  <section id="faqs" class="section-block">
+    <h2>Frequently Asked Questions (FAQs)</h2>
+    <h3>Is Aviator legal in India?</h3>
+    <p>Yes, playing Aviator on BharatClub is legal and safe under skill-based game regulations.</p>
+    <h3>What is the maximum multiplier in Aviator?</h3>
+    <p>The multiplier can reach up to 100x or more, but it’s rare. Timing is key.</p>
+    <h3>Can I try Aviator for free?</h3>
+    <p>Yes, a demo mode is available for practice without real money.</p>
+    <h3>What payment methods are supported?</h3>
+    <p>UPI, Paytm, PhonePe, Google Pay, and bank transfers are supported.</p>
+    <h3>How fast are withdrawals?</h3>
+    <p>Withdrawals are usually processed instantly on BharatClub.</p>
+    <h3>Can I play Aviator on mobile?</h3>
+    <p>Yes, Aviator is fully optimized for Android and iOS devices.</p>
+    <h3>Is there a strategy that guarantees wins?</h3>
+    <p>No, Aviator is a game of chance, but smart strategies and bankroll management improve your chances.</p>
+    <h3>What is the minimum bet?</h3>
+    <p>The minimum bet is very low, making Aviator accessible to all players.</p>
+    <h3>Does Aviator have responsible gaming tools?</h3>
+    <p>Yes, you can set deposit and play limits on BharatClub for safe play.</p>
+  </section>
+
+  <section id="responsible" class="section-block">
+    <h2>Responsible Gaming</h2>
+    <p>Aviator is fun and thrilling, but it’s important to play responsibly:</p>
+    <ul>
+      <li>Set a budget before you start playing.</li>
+      <li>Take regular breaks to avoid fatigue.</li>
+      <li>Don’t chase losses – know when to stop.</li>
+      <li>Play for entertainment, not as an income source.</li>
+    </ul>
+    <p>If you ever feel gaming is becoming a problem, reach out to helplines like <a href="https://www.ncpgambling.org/">NCP Gambling</a> for support.</p>
+  </section>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BharatClub",
+    "url": "https://bharatclub.com/",
+    "logo": "https://bharatclub.com/logo.png",
+    "sameAs": ["https://t.me/bharatclub"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    "name": "Aviator",
+    "description": "Aviator is a crash game where players bet and cash out before the plane flies away.",
+    "applicationCategory": "Game",
+    "operatingSystem": "Web, Android, iOS",
+    "publisher": {
+      "@type": "Organization",
+      "name": "BharatClub",
+      "url": "https://bharatclub.com/"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "Is Aviator legal in India?","acceptedAnswer": {"@type": "Answer","text": "Yes, playing Aviator on BharatClub is legal and safe under skill-based game regulations."}},
+      {"@type": "Question","name": "What is the maximum multiplier in Aviator?","acceptedAnswer": {"@type": "Answer","text": "The multiplier can reach up to 100x or more, but it’s rare. Timing is key."}},
+      {"@type": "Question","name": "Can I try Aviator for free?","acceptedAnswer": {"@type": "Answer","text": "Yes, a demo mode is available for practice without real money."}},
+      {"@type": "Question","name": "What payment methods are supported?","acceptedAnswer": {"@type": "Answer","text": "UPI, Paytm, PhonePe, Google Pay, and bank transfers are supported."}},
+      {"@type": "Question","name": "How fast are withdrawals?","acceptedAnswer": {"@type": "Answer","text": "Withdrawals are usually processed instantly on BharatClub."}}
+    ]
+  }
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("hamburgerMenu").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

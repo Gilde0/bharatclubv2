@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aviator - Bharat Clubs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+ body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ff3b3b;
+  color: #fff;
+  font-size: 18px;
+}
+    header {
+      background-color: #8B0000;
+      padding: 20px;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 4px 8px rgba(139,0,0,0.6);
+      flex-shrink: 0;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+main {
+  flex: 1 0 auto; /* grow and shrink, take remaining space */
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 30px auto;
+  background-color: #8B0000;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(139,0,0,0.7);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    .game-logo {
+      max-width: 320px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .description {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      max-width: 700px;
+      text-align: left;
+      white-space: pre-line;
+    }
+    .btn-play {
+      background-color: #ff2e00;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2em;
+      padding: 15px 50px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(255, 46, 0, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin: 20px auto; /* Center horizontally */
+    }
+    .btn-play:hover {
+      background-color: #e02a00;
+      box-shadow: 0 8px 16px rgba(224, 42, 0, 0.8);
+    }
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.95em;
+  flex-shrink: 0;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.7);
+  width: 100%;
+}
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      main {
+        margin: 20px 10px 80px 10px; /* extra bottom margin for footer */
+        padding: 30px 15px;
+      }
+      .description {
+        font-size: 1em;
+        text-align: left;
+      }
+      .btn-play {
+        width: 100%;
+        padding: 15px 0;
+      }
+    }
+    .hamburger-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+    .hamburger-icon {
+      font-size: 30px;
+      background-color: #8B0000;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
+    }
+    .hamburger-icon:hover {
+      background-color: #a30000;
+    }
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .hamburger-menu a {
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-bottom: 1px solid #333;
+      transition: background-color 0.2s;
+    }
+    .hamburger-menu a:hover {
+      background-color: #8B0000;
+    }
+    .hamburger-menu.show {
+      display: flex;
+    }
+    .content-wrapper {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      background-color: #8B0000; /* current dark red */
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(139,0,0,0.7);
+    }
+    .section-block {
+      background-color: #a72a2a; /* brighter dark red */
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      margin-bottom: 40px;
+    }
+    .description p {
+      margin-bottom: 10px;
+      line-height: 1.7;
+      color: #fff;
+    }
+    .section-block ol {
+      text-align: justify;
+      padding-left: 20px;
+      margin-top: 10px;
+      line-height: 1.8;
+      color: #fff;
+    }
+    .section-block ol li,
+    .section-block ul li {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .section-block ul {
+      padding-left: 20px;
+      text-align: left;
+      color: #fff;
+    }
+    .section-block blockquote {
+      background-color: #8b0000;
+      padding: 15px 20px;
+      border-left: 4px solid #ff2e00;
+      font-style: italic;
+      color: #ccc;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    .cta-buttons a {
+      display: inline-block;
+      padding: 14px 35px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    .cta-buttons .btn-play {
+      background-color: #ff2e00;
+      color: #fff;
+    }
+    .cta-buttons .btn-play:hover {
+      background-color: #e02a00;
+    }
+    .cta-buttons .btn-support {
+      background-color: #0088cc;
+      color: #fff;
+    }
+    .cta-buttons .btn-support:hover {
+      background-color: #0077b6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Aviator</h1>
+  </header>
+
+  <main>
+    <img src="aviator.jpg" alt="Aviator Game" class="game-logo" />
+
+    <section class="section-block">
+      <h2>About Aviator</h2>
+      <div class="description">
+        <p>Aviator is a thrilling crash game where your winnings grow as your plane climbs. But be careful — the longer you wait, the more risk you take. The game is all about timing: cash out before the plane disappears!</p>
+        <p>With fast rounds, real-time betting, and instant withdrawals, Aviator is one of the most popular games in BharatClub. It's perfect for both new players and experienced thrill-seekers who love quick action and big rewards.</p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>How to Play Aviator</h2>
+      <ol>
+        <li>Place your bet before the round begins.</li>
+        <li>Watch the plane take off and the multiplier increase.</li>
+        <li>Cash out anytime before the plane crashes to secure your winnings.</li>
+        <li>If you wait too long, the plane may crash and you lose the bet.</li>
+      </ol>
+    </section>
+
+    <section class="section-block">
+      <h2>Why Play Aviator?</h2>
+      <ul>
+        <li>✈️ Real-time multiplier increases for high rewards</li>
+        <li>⚡ Fast-paced gameplay with new rounds every 10–15 seconds</li>
+        <li>🔐 Secure deposits and instant cashouts</li>
+        <li>📱 Optimized for mobile and desktop</li>
+        <li>🎁 Special bonuses and leaderboard events</li>
+      </ul>
+    </section>
+
+    <section class="section-block">
+      <h2>Player Reviews</h2>
+      <blockquote>"It’s like riding a rollercoaster! I love the thrill of when to cash out." – <em>Rahul, Bangalore</em></blockquote>
+      <blockquote>"Aviator is my go-to game when I want fast wins. Super smooth experience!" – <em>Sneha, Hyderabad</em></blockquote>
+    </section>
+
+    <section class="section-block">
+      <h2>FAQs</h2>
+      <p><strong>Is Aviator fair?</strong><br/>Yes, the results are provably fair and random on each round.</p>
+      <p><strong>Can I play Aviator on mobile?</strong><br/>Absolutely. The game is fully mobile-friendly.</p>
+      <p><strong>What is the minimum bet?</strong><br/>You can start with as little as ₹10 per round.</p>
+      <p><strong>Where do I contact support?</strong><br/>You can contact us 24/7 on Telegram for help.</p>
+    </section>
+
+    <section class="section-block cta-buttons">
+      <a href="https://www.bhdfiejand.com/#/register?invitationCode=818553846140"
+         class="btn-play"
+         target="_blank"
+         rel="noopener noreferrer">
+         🎮 Play Aviator Now
+      </a>
+
+      <a href="https://t.me/bhtclubs"
+         class="btn-support"
+         target="_blank"
+         rel="noopener noreferrer">
+         💬 Contact Support on Telegram
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Bharat Clubs. All rights reserved.
+  </footer>
+<div class="hamburger-container">
+    <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+    <div class="hamburger-menu" id="hamburgerMenu">
+      <a href="/index.html">Home</a>
+      <a href="/games/wingo/index.html">Wingo</a>
+      <a href="/games/chickenroad2/index.html">Chicken Road 2</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("hamburgerMenu").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

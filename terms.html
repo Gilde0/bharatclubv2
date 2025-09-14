@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms & Conditions | Bharat Clubs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      background-color: #ff3b3b;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      position: relative;
+      padding: 20px;
+      background-color: transparent;
+      text-align: center;
+    }
+    header img {
+      position: fixed;
+      top: 10px;
+      left: 20px;
+      width: 50px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .hamburger-container {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 999;
+    }
+    .hamburger-icon {
+      font-size: 28px;
+      background-color: rgba(0,0,0,0.2);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .hamburger-icon:hover {
+      background-color: rgba(0,0,0,0.4);
+    }
+    .hamburger-menu {
+      display: none;
+      position: fixed;
+      top: 50px;
+      right: 20px;
+      background-color: rgba(0,0,0,0.8);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+    .hamburger-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.2s;
+    }
+    .hamburger-menu a:hover,
+    .hamburger-menu a.active {
+      background-color: rgba(255,255,255,0.2);
+    }
+.content-wrapper {
+  background-color: #8B0000; /* Dark red background for contrast */
+  padding: 40px 30px;
+  max-width: 900px;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+    main {
+      padding: 80px 20px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    main h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+    main h2 {
+      margin-top: 30px;
+      font-size: 1.4em;
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      padding-bottom: 5px;
+    }
+    main p {
+      margin-bottom: 15px;
+    }
+    main ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+footer { background-color:#000000; color:white; text-align:center; padding:20px; margin-top:50px; }
+  footer a { color:white; text-decoration:underline; margin:0 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Logoname.jpg" alt="Bharat Clubs Logo" />
+    <div class="hamburger-container">
+      <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+      <div class="hamburger-menu" id="hamburgerMenu">
+        <a href="index.html">Home</a>
+        <a href="original.html">Wingo</a>
+        <a href="chickenroad2.html">Chicken Road 2</a>
+        <a href="aviator.html">Aviator</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html" class="active">Terms & Conditions</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+ <div class="content-wrapper">
+    <h1>Terms & Conditions</h1>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using Bharat Clubs, you agree to comply with these terms and all applicable laws and regulations.</p>
+
+    <h2>2. Eligibility</h2>
+    <p>Users must be 18 years or older to register and play games on this platform. By using our services, you confirm your age eligibility.</p>
+
+    <h2>3. Account Responsibilities</h2>
+    <ul>
+      <li>You are responsible for maintaining the confidentiality of your login credentials.</li>
+      <li>All activity under your account is your responsibility.</li>
+    </ul>
+
+    <h2>4. Game Rules</h2>
+    <p>Each game has its own set of rules. Users must follow them strictly. Misuse or fraud may lead to account suspension or termination.</p>
+
+    <h2>5. Deposits & Withdrawals</h2>
+    <p>All deposits are final. Withdrawal requests may require identity verification and are subject to our processing policies.</p>
+
+    <h2>6. Prohibited Activities</h2>
+    <ul>
+      <li>Using bots, cheats, or any automated system to play.</li>
+      <li>Manipulating or tampering with results or transactions.</li>
+      <li>Harassing other users or support staff.</li>
+    </ul>
+
+    <h2>7. Termination of Use</h2>
+    <p>We reserve the right to suspend or terminate any account at our discretion for violating the terms or engaging in fraudulent behavior.</p>
+
+    <h2>8. Updates to Terms</h2>
+    <p>These terms may be updated at any time. Continued use of the platform means acceptance of the latest terms.</p>
+</div> 
+ </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("hamburgerMenu").classList.toggle("show");
+    }
+  </script>
+<footer>
+  <p>&copy; 2025 BharatClub. All Rights Reserved.</p>
+  <p>
+    <a href="terms.html">Terms & Condition</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </p>
+  <p>Follow us: <a href="https://t.me/bhtclubs">Telegram</a></p>
+</footer>
+</body>
+</html>
