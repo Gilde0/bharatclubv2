@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: url("Bharat-Club-Logo.png") repeat;
+  background: /images/Bharat-Club-Logo.png" repeat;
   background-size: 192px 192px;
   position: relative;
   color: #000;
@@ -24,7 +24,7 @@ body::before {
   max-width: 1280px;
   height: 204px;
   margin: 0 auto;
-  background: url("banner_extended.png") no-repeat center;
+  background: /images/banner_extended.png no-repeat center;
   background-size: cover;
 }
 
@@ -45,7 +45,6 @@ body::before {
   box-sizing: border-box;
 }
 
-/* Top Games Section */
 #topgames-section {
   padding: 40px 0;
   background-color: #f4f4f4;
@@ -199,4 +198,5 @@ section p {
 
 .btn:hover {
   background-color: #e63636;
+
 }
